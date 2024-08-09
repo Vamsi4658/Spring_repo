@@ -1,0 +1,44 @@
+package com.model;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+/*
+ *  one-to-one
+ */
+public class Person {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int person_id;
+	private String personName;
+	/*
+	 *  one person have a one aadhar number at that time make use of one-to-one annotation
+	 */
+	@OneToOne
+	@JoinColumn(name = "aadhar_id")
+	private Aadhar aadhar;
+	public int getPerson_id() {
+		return person_id;
+	}
+	public void setPerson_id(int person_id) {
+		this.person_id = person_id;
+	}
+	public String getPersonName() {
+		return personName;
+	}
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
+	public Aadhar getAadhar() {
+		return aadhar;
+	}
+	public void setAadhar(Aadhar aadhar) {
+		this.aadhar = aadhar;
+	}
+	
+	
+}

@@ -1,0 +1,50 @@
+package com.spring.demo.service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import com.spring.demo.model.Employee;
+
+public class EmployeeService implements EmploypeeServiceInterface{
+
+	private List<Employee> employeeList = new ArrayList<Employee>();
+	
+	@Override
+	public String addEmployee(Employee employee) {
+		
+		employeeList.add(employee);
+		return "Employee added list at the index of: "+employeeList.indexOf(employee);
+	}
+
+	@Override
+	public List<Employee> addListOFEmployees(List<Employee> employees) {
+		
+		employeeList.addAll(employees);
+		return employeeList;
+	}
+
+	@Override
+	public List<Employee> displayAllEmployees() {
+		return employeeList;
+	}
+
+	
+	@Override
+	public Employee showEmployee(int id) {
+		
+	}
+	@Override
+	public Employee updateEmployee() {
+		Employee employee = new Employee();
+		return null;
+	}
+
+	@Override
+	public void deleteEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

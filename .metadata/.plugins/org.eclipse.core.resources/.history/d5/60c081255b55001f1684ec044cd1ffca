@@ -1,0 +1,29 @@
+package com.spring.demo.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.spring.demo.model.Employee;
+
+
+@RestController
+public class EmployeeController {
+	
+	List<Employee> employees = new ArrayList<Employee>();
+
+	@PostMapping(value = "/emp")
+	public Employee displayEmployee(@RequestBody Employee employee) {
+		return employee;
+	}
+	
+	@PostMapping(value = "/emp/add")
+	public int addEmployee(@RequestBody Employee employee) {
+		
+		employees.add(employee);
+		return employee.getEmp_id();
+	}
+}

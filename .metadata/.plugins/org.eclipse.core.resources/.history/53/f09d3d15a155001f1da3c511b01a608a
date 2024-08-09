@@ -1,0 +1,70 @@
+package com.spring.demo.service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import com.spring.demo.model.Employee;
+
+public class EmployeeService implements EmploypeeServiceInterface{
+
+	private List<Employee> employeeList = new ArrayList<Employee>();
+	
+	@Override
+	public String addEmployee(Employee employee) {
+		
+		employeeList.add(employee);
+		return "Employee added list at the index of: "+employeeList.indexOf(employee);
+	}
+
+	@Override
+	public List<Employee> addListOFEmployees(List<Employee> employees) {
+		
+		employeeList.addAll(employees);
+		return employeeList;
+	}
+
+	@Override
+	public List<Employee> displayAllEmployees() {
+		return employeeList;
+	}
+
+	
+	@Override
+	public Employee showEmployee(int id) {
+		
+		for (Employee employee : employeeList) {
+			
+			if (employee.getEmp_id()==id) {
+				return employee;
+			}
+		}
+		return null;
+	}
+	@Override
+	public Employee updateEmployee(int id,Employee emp) {
+		for (Employee employee : employeeList) {
+			if (employee.getEmp_id()==id) {	
+				employeeList.add(emp);
+				return employee;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean deleteEmployee(int id) {
+		
+		Iterator<Employee> iterator = employeeList.iterator();
+	    while (iterator.hasNext()) {
+	        Employee employee = iterator.next();
+	        if (employee.getEmp_id() == id) {
+	            iterator.remove();
+	            return true; // Indicate that the employee was successfully deleted
+	        }
+	    }
+	    return false; // Indicate that no employee with the given ID was found
+	}
+
+	
+}

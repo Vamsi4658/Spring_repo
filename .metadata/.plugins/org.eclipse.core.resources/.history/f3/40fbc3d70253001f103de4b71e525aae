@@ -1,0 +1,42 @@
+package com.main;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.mobel.Student;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// create configuration Object
+		Configuration configuration = new Configuration().configure();
+		
+		// create session factory object
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		
+		//create Session Object
+		Session session = sessionFactory.openSession();
+		
+		// create Transaction instance
+		session.beginTransaction();
+		
+		Student s1 = new Student();
+		s1.setStud_id(100);
+		s1.setStud_Name("Vamsi Savarapu");
+		s1.setCollegeName("Pragati Engineering College");
+		s1.setCgpa(7.24);
+		
+		session.save(s1);
+		
+		//commit the transaction
+		session.getTransaction().commit();
+		
+		//close the session
+		session.close();
+		
+		//close the session factory
+		sessionFactory.close();
+	}
+}

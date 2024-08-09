@@ -1,0 +1,45 @@
+package com.mobel;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Student {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int stud_id;
+	@Column(name = "studentName")
+	private String stud_Name;
+	private String collegeName;
+	private double cgpa;
+	public int getStud_id() {
+		return stud_id;
+	}
+	public void setStud_id(int stud_id) {
+		this.stud_id = stud_id;
+	}
+	public String getStud_Name() {
+		return stud_Name;
+	}
+	public void setStud_Name(String stud_Name) {
+		this.stud_Name = stud_Name;
+	}
+	public String getCollegeName() {
+		return collegeName;
+	}
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
+	public double getCgpa() {
+		return cgpa;
+	}
+	public void setCgpa(double cgpa) {
+		this.cgpa = cgpa;
+	}
+	
+	
+}

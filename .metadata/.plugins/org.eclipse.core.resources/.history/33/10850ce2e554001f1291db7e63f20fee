@@ -1,0 +1,26 @@
+package com.main;
+
+import java.util.List;
+
+import javax.persistence.criteria.From;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.model.Person;
+
+public class DataBaseOperationOnToMany {
+
+	public static void main(String[] args) {
+		
+		Configuration configuration =new Configuration().configure();
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		List persons = session.createQuery("From Person").list();
+		
+		for(Person person: )
+	}
+}

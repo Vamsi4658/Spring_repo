@@ -1,0 +1,73 @@
+package com.main;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.model.Aadhar;
+import com.model.Course;
+import com.model.Mobile;
+import com.model.Person;
+
+public class PersonManyToMany {
+
+	public static void main(String[] args) {
+	
+		Configuration configuration = new Configuration().configure();
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		// inserting the data into Many-to-Many table
+		Course c1 =new Course();
+		Course c2 =new Course();
+		Course c3 =new Course();
+	
+		Person p1 = new Person();
+		Person p2 = new Person();
+
+		Aadhar a1 = new Aadhar();
+		Aadhar a2 = new Aadhar();
+
+		Mobile m1 = new Mobile();
+		Mobile m2 = new Mobile();
+		
+		
+		c1.setCourseName("Java");
+		c2.setCourseName("Python");
+		c3.setCourseName("ReactJs");
+		
+		a1.setIssuedBy("MH");
+		a2.setIssuedBy("KL");
+		
+		m1.setBrand("Mi");
+		m2.setBrand("nokia");
+		
+		p1.setPersonName("Ilavarasan");
+		p1.setAadhar(a1);
+		p1.getMobile().add(m1);
+		p1.getCourse().add(c1);
+		p1.getCourse().add(c2);
+		
+		p1.setPersonName("Marcus");
+		p1.setAadhar(a2);
+		p1.getMobile().add(m2);
+		p1.getCourse().add(c2);
+		p1.getCourse().add(c3);
+		
+		
+		// save object
+		session.save(p1);
+		session.save(p2);
+		session.save(c1);
+		session.save(c2);
+		session.save(c3);
+		session.save(a1);
+		session.save(a2);
+		session.save(m1);
+		session.save(m2);
+				
+		session.getTransaction().commit();
+		session.close();
+		session.close();
+	}
+}

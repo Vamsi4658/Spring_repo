@@ -1,0 +1,34 @@
+package com.spring.demo.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.spring.demo.model.Employee;
+import com.spring.demo.service.EmployeeService;
+import com.spring.demo.service.EmploypeeServiceInterface;
+
+
+@RestController
+public class EmployeeController {
+	
+	private EmploypeeServiceInterface emp = new EmployeeService();
+	
+	/* 
+	 *  save Employee details 
+	 */
+	@PostMapping("/add/emp")
+	public String addEmployee(@RequestBody Employee employee) {
+		
+		return emp.addEmployee(employee);
+	}
+	
+	@PostMapping("/add/emp/list")
+	public List<Employee> addListOfEmployees(@RequestBody List<Employee> employees) {
+		
+		return emp.addListOFEmployees(employees);
+	}
+}

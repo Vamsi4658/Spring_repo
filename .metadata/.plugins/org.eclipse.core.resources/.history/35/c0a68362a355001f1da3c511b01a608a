@@ -1,0 +1,53 @@
+package com.spring.demo.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.spring.demo.model.Employee;
+import com.spring.demo.service.EmployeeServiceImp;
+import com.spring.demo.service.EmploypeeService;
+
+
+@RestController
+public class EmployeeController {
+	
+	private EmploypeeService emp = new EmployeeServiceImp();
+	
+	@PostMapping("/add/emp")
+	public String addEmployee(@RequestBody Employee employee) {
+		
+		return emp.addEmployee(employee);
+	}
+	
+	@PostMapping("/add/emp/list")
+	public List<Employee> addListOfEmployees(@RequestBody List<Employee> employees) {
+		
+		return emp.addListOFEmployees(employees);
+	}
+	@GetMapping("/show/allemps")
+	public List<Employee> displayAllEmployee(){
+		return emp.displayAllEmployees();
+	}
+	
+	@GetMapping("/show/{id}")
+	public Employee showEmployee(@PathVariable int id) {
+		return emp.showEmployee(id);
+	}
+	
+	@PutMapping("/update/empsal/{id}")
+	public Employee updateEmpSal(@PathVariable int id, @RequestBody Employee employee) {
+		return emp.updateEmployee(id, employee);
+	}
+	
+	@DeleteMapping("/del/emp/{id}")
+	public boolean deleteEmployee(@PathVariable int id) {
+		return emp.deleteEmployee(id);
+	}
+} 

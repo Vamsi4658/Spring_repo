@@ -1,0 +1,4 @@
+spring.application.name=spring-web-service-demo
+
+
+server.port=5566

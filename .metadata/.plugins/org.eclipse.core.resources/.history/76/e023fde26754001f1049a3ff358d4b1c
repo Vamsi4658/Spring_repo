@@ -1,0 +1,22 @@
+package com.main;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.model.Person;
+
+public class PersonManyToMany {
+
+	public static void main(String[] args) {
+	
+		Configuration configuration = new Configuration().configure();
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		session.getTransaction().commit();
+		session.close();
+		session.close();
+	}
+}

@@ -1,0 +1,42 @@
+package com.main;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.model.Aadhar;
+import com.model.Course;
+import com.model.Mobile;
+import com.model.Person;
+
+public class PersonManyToMany {
+
+	public static void main(String[] args) {
+	
+		Configuration configuration = new Configuration().configure();
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		// inserting the data into Many-to-Many table
+		Course c1 =new Course();
+		Person p1 = new Person();
+		Aadhar a1 = new Aadhar();
+		Mobile m1 = new Mobile();
+		
+		Course c2 =new Course();
+		Person p2 = new Person();
+		Aadhar a2 = new Aadhar();
+		Mobile m2 = new Mobile();
+		
+		c1.setCourseName("Java");
+		c2.setCourseName("Python");
+		
+		a1.setIssuedBy("MH");
+		a2.setIssuedBy("KL");
+		
+		
+		session.getTransaction().commit();
+		session.close();
+		session.close();
+	}
+}

@@ -1,0 +1,41 @@
+package com.crud.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.crud.DTO.ProductDTO;
+import com.crud.model.Product;
+import com.crud.repository.ProductRepository;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	private ProductRepository productRepository;
+	
+	@Override
+	public Product createProduct(ProductDTO productDto) {	
+		Product product = new Product();
+		product.setProductId(productDto.getProductId());
+		product.setProductName(productDto.getProductName());
+		product.setPrice(productDto.getPrice());		
+		product.setQuantity(productDto.getQuantity());
+		product.setDate(productDto.getDate());
+		
+		 return productRepository.save(product);
+	}
+
+	@Override
+	public List<Product> showAllProduct() {
+		return productRepository.findAll();
+	}
+
+	@Override
+	public Product showProduct(Integer productId) {
+		
+		return productRepository.findById(productId).orElse(null);
+	}
+
+}

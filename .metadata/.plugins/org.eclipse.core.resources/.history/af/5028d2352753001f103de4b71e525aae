@@ -1,0 +1,14 @@
+package com.service;
+
+import com.model.Employee;
+
+public class EmplyeeImp implements EmployeeInterface {
+
+//	private Employee;
+	@Override
+	public void addEmployeeDetails() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

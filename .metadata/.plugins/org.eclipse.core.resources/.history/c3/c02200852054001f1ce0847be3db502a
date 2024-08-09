@@ -1,0 +1,43 @@
+package com.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+public class Course {
+
+	private int course_id;
+	private String courseName;
+	
+	@ManyToMany
+	private List<Person> person = new ArrayList<Person>();
+
+	public int getCourse_id() {
+		return course_id;
+	}
+
+	public void setCourse_id(int course_id) {
+		this.course_id = course_id;
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	public List<Person> getPerson() {
+		return person;
+	}
+
+	public void setPerson(List<Person> person) {
+		this.person = person;
+	}
+	
+	
+	
+}

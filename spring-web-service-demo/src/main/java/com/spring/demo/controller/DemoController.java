@@ -1,0 +1,24 @@
+package com.spring.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController 
+public class DemoController {
+
+	
+	@RequestMapping(value = "/",method = RequestMethod.GET)
+//	@GetMapping("/")
+	public String showInfo() {
+		return "this is my frist spring boot API";
+	}
+	
+
+	@RequestMapping(value = "/name/{uName}",method = RequestMethod.GET)
+	public String showUserInfo(@PathVariable String uName) {
+		return "hi..."+uName;
+	}
+}
