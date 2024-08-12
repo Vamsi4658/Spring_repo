@@ -36,6 +36,6 @@ public interface ProductService {
      * Deletes a specific product by its ID.
      * @param id The ID of the product to delete.
      */
-	void deleteProductByIdh(int id);
+	String deleteProductByIdh(int id);
 
 }

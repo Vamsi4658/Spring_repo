@@ -24,7 +24,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	/*
-     * Endpoint to create a new product.
+     * End point to create a new product.
      * @param productDTO The data transfer object containing the details of the product to be created.
      * @return A response entity containing a success message and HTTP status code 201 (CREATED).
      */
@@ -35,7 +35,7 @@ public class ProductController {
 	}
 	
 	/*
-     * Endpoint to fetch all products.
+     * End point to fetch all products.
      * @return A response entity containing a list of all products and HTTP status code 200 (OK).
      */
 	@GetMapping("/fetch/product")
@@ -44,7 +44,7 @@ public class ProductController {
 		return new ResponseEntity<>(responceProductDTO,HttpStatus.OK);
 	}
 	/*
-     * Endpoint to fetch a particular product by its ID.
+     * End point to fetch a particular product by its ID.
      * @param productId The ID of the product to be retrieved.
      * @return A response entity containing the product details and HTTP status code 200 (OK).
      */
@@ -55,9 +55,9 @@ public class ProductController {
 	}
 	
 	/*
-     * Endpoint to update the name of a product by its ID.
-     * @param id The ID of the product to be updated.
-     * @param productName The new name of the product.
+     * End point to update the name of a product by its ID.
+     * @PathVariable id The ID of the product to be updated.
+     * @R productName The new name of the product.
      * @return A response entity containing the updated product details and HTTP status code 201 (CREATED).
      */
 	@PutMapping("/update/product/{id}/productname")
@@ -66,13 +66,13 @@ public class ProductController {
 		return new ResponseEntity<>(productDTO,HttpStatus.CREATED);
 	}
 	/*
-     * Endpoint to delete a product by its ID.
+     * End point to delete a product by its ID.
      * @param id The ID of the product to be deleted.
      * @return A response entity containing a success message and HTTP status code 201 (CREATED).
      */
 	@DeleteMapping("/delete/product/{id}")
 	public ResponseEntity<String> deleteProductById(@PathVariable int id){
-		productService.deleteProductByIdh(id);
-		return new ResponseEntity<>("product sucessfully",HttpStatus.CREATED);
+		String status = productService.deleteProductByIdh(id);
+		return new ResponseEntity<>(status,HttpStatus.OK);
 	}
 }

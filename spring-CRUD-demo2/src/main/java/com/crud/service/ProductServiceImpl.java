@@ -1,4 +1,4 @@
-package com.crud.service;
+	package com.crud.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -102,10 +102,13 @@ public class ProductServiceImpl implements ProductService {
      * @param id The ID of the product to delete.
      */
 	@Override
-	public void  deleteProductByIdh(int id) {
+	public String  deleteProductByIdh(int id) {
 		Product product =productRepository.findById(id).orElse(null);
 		if (product!=null) {			
 			productRepository.deleteById(id);
+			return "Product "+id+" deleted Successfully";
+		} else {
+			return "Product "+id+" Not found...";
 		}
 	}
 
